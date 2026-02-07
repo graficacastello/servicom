@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ServiCom - Serviços Elétricos</title>
+    <title>ServiCom - Serviços Elétricos & Reformas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -45,37 +45,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
-            margin-bottom: 20px;
-        }
-
-        .logo-placeholder {
-            width: 300px;
-            height: 150px;
-            background-color: #222;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            border: 2px dashed var(--amarelo);
-        }
-
-        .logo-placeholder p {
-            color: var(--amarelo);
-            font-size: 18px;
-            text-align: center;
-        }
-
-        .logo-instructions {
-            color: var(--amarelo);
-            text-align: center;
-            font-size: 14px;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 10px;
-            background-color: rgba(255, 215, 0, 0.1);
-            border-radius: 5px;
+            margin-bottom: 10px;
         }
 
         /* Hero Section */
@@ -121,10 +91,167 @@
             box-shadow: 0 6px 15px rgba(255, 0, 0, 0.4);
         }
 
-        /* Contatos Section */
-        .contatos {
+        /* Seção de Serviços */
+        .servicos {
+            padding: 80px 0;
+            background-color: var(--branco);
+        }
+
+        .servicos h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--preto);
+            position: relative;
+        }
+
+        .servicos h2:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background-color: var(--vermelho);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .servicos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .servico-card {
+            background-color: var(--cinza-claro);
+            border-radius: 10px;
+            padding: 30px 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--amarelo);
+        }
+
+        .servico-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+            border-left-color: var(--vermelho);
+        }
+
+        .servico-icon {
+            font-size: 2.8rem;
+            color: var(--preto);
+            margin-bottom: 20px;
+        }
+
+        .servico-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--preto);
+        }
+
+        /* Carrossel de Imagens */
+        .carrossel {
             padding: 60px 0;
             background-color: var(--cinza-claro);
+        }
+
+        .carrossel h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--preto);
+            position: relative;
+        }
+
+        .carrossel h2:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background-color: var(--vermelho);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .carrossel-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .carrossel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carrossel-slide {
+            min-width: 100%;
+        }
+
+        .carrossel-slide img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carrossel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            padding: 18px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+            z-index: 10;
+        }
+
+        .carrossel-btn:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .carrossel-btn.prev {
+            left: 20px;
+        }
+
+        .carrossel-btn.next {
+            right: 20px;
+        }
+
+        .carrossel-indicadores {
+            display: flex;
+            justify-content: center;
+            margin-top: 25px;
+            gap: 12px;
+        }
+
+        .indicador {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: #ccc;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .indicador.active {
+            background-color: var(--vermelho);
+        }
+
+        /* Contatos Section */
+        .contatos {
+            padding: 80px 0;
+            background-color: var(--branco);
         }
 
         .contatos h2 {
@@ -153,7 +280,7 @@
         }
 
         .contato-card {
-            background-color: var(--branco);
+            background-color: var(--cinza-claro);
             border-radius: 10px;
             padding: 30px;
             text-align: center;
@@ -197,9 +324,9 @@
         }
 
         .contato-item {
-            margin-bottom: 15px;
-            padding: 15px;
-            background-color: rgba(0, 0, 0, 0.03);
+            margin-bottom: 20px;
+            padding: 18px;
+            background-color: rgba(255, 255, 255, 0.7);
             border-radius: 8px;
         }
 
@@ -289,15 +416,25 @@
             .hero h1 {
                 font-size: 2.2rem;
             }
-
             .hero p {
                 font-size: 1rem;
             }
-
+            .servicos h2,
+            .carrossel h2,
             .contatos h2 {
                 font-size: 2rem;
             }
-
+            .servicos-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+            }
+            .carrossel-slide img {
+                height: 300px;
+            }
+            .carrossel-btn {
+                padding: 12px;
+                font-size: 1.2rem;
+            }
             .contato-card {
                 padding: 20px;
             }
@@ -310,8 +447,6 @@
         <div class="container">
             <div class="logo-container">
                <img src="logoservicom.png" alt="ServiCom Logo" style="max-width: 300px; height: auto;">
-                   
-                </div>
             </div>
         </div>
     </header>
@@ -319,9 +454,73 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>ServiCom - Serviços Elétricos</h1>
-            <p>Profissionalismo, segurança e qualidade em serviços elétricos residenciais, comerciais e industriais. Entre em contato e solicite um orçamento!</p>
-            <a href="#contatos" class="cta-button">FALE CONOSCO AGORA</a>
+            <h1>ServiCom - Serviços Elétricos & Reformas</h1>
+            <p>Soluções completas para sua casa ou empresa: da instalação elétrica à pintura e paisagismo. Profissionalismo, segurança e qualidade garantidos.</p>
+            <a href="#contatos" class="cta-button">SOLICITE UM ORÇAMENTO</a>
+        </div>
+    </section>
+
+    <!-- Seção de Serviços -->
+    <section id="servicos" class="servicos">
+        <div class="container">
+            <h2>Nossos Serviços</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 30px; font-size: 1.1rem; color: #555;">
+                Oferecemos uma gama completa de serviços para construção, reforma e manutenção. Conte com nossa equipe especializada para cada etapa do seu projeto.
+            </p>
+            <div class="servicos-grid">
+                <div class="servico-card">
+                    <div class="servico-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Elétrica</h3>
+                    <p>Instalações, reparos e manutenção elétrica residencial, comercial e industrial.</p>
+                </div>
+                <div class="servico-card">
+                    <div class="servico-icon"><i class="fas fa-faucet"></i></div>
+                    <h3>Hidráulica</h3>
+                    <p>Consertos, instalações e manutenção de encanamentos, tubulações e vazamentos.</p>
+                </div>
+                <div class="servico-card">
+                    <div class="servico-icon"><i class="fas fa-hammer"></i></div>
+                    <h3>Pedreiro</h3>
+                    <p>Alvenaria, reformas, assentamento de pisos e cerâmicas, construções em geral.</p>
+                </div>
+                <div class="servico-card">
+                    <div class="servico-icon"><i class="fas fa-paint-roller"></i></div>
+                    <h3>Pintura e Gesso</h3>
+                    <p>Pintura interna/externa, aplicação de texturas, sancas e trabalhos em gesso.</p>
+                </div>
+                <div class="servico-card">
+                    <div class="servico-icon"><i class="fas fa-tree"></i></div>
+                    <h3>Paisagismo</h3>
+                    <p>Projeto e execução de jardins, podas, irrigação e manutenção de áreas verdes.</p>
+                </div>
+                <div class="servico-card">
+                    <div class="servico-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Segurança Eletrônica</h3>
+                    <p>Instalação de câmeras, alarmes, cercas elétricas e sistemas de monitoramento.</p>
+                </div>
+                <div class="servico-card">
+                    <div class="servico-icon"><i class="fas fa-trash-alt"></i></div>
+                    <h3>Remoção de Materiais</h3>
+                    <p>Coleta, transporte e descarte correto de entulhos e materiais descartáveis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carrossel de Imagens -->
+    <section class="carrossel">
+        <div class="container">
+            <h2>Nossos Trabalhos</h2>
+            <div class="carrossel-container">
+                <div class="carrossel-track">
+                    <!-- As imagens serão inseridas aqui pelo JavaScript -->
+                </div>
+                <button class="carrossel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="carrossel-btn next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="carrossel-indicadores">
+                <!-- Os indicadores serão inseridos aqui pelo JavaScript -->
+            </div>
         </div>
     </section>
 
@@ -338,23 +537,23 @@
                     <h3>WhatsApp</h3>
                     <div class="contato-info">
                         <div class="contato-item">
-                            <p><strong>Nilson Costa</strong></p>
+                            <p><strong>Atendimento 1</strong></p>
                             <p>(31) 98364-2950</p>
                             <a href="https://wa.me/5531983642950" target="_blank" class="contato-link">
                                 <i class="fab fa-whatsapp"></i> Conversar no WhatsApp
                             </a>
                         </div>
                         <div class="contato-item">
-                            <p><strong>ServiCom</strong></p>
+                            <p><strong>Atendimento 2</strong></p>
                             <p>(31) 99721-9486</p>
                             <a href="https://wa.me/5531997219486" target="_blank" class="contato-link">
                                 <i class="fab fa-whatsapp"></i> Conversar no WhatsApp
                             </a>
                         </div>
                         <div class="contato-item">
-                            <p><strong>Atendimento</strong></p>
-                            <p>(31) 93501-4054</p>
-                            <a href="https://wa.me/5531935014054" target="_blank" class="contato-link">
+                            <p><strong>Atendimento 3</strong></p>
+                            <p>(31) 93501-4056</p>
+                            <a href="https://wa.me/5531935014056" target="_blank" class="contato-link">
                                 <i class="fab fa-whatsapp"></i> Conversar no WhatsApp
                             </a>
                         </div>
@@ -368,13 +567,6 @@
                     </div>
                     <h3>E-mail</h3>
                     <div class="contato-info">
-                        <div class="contato-item">
-                            <p><strong>Nilson Costa</strong></p>
-                            <p>nilsoncosta802@gmail.com</p>
-                            <a href="mailto:nilsoncosta802@gmail.com" class="contato-link">
-                                <i class="fas fa-paper-plane"></i> Enviar E-mail
-                            </a>
-                        </div>
                         <div class="contato-item">
                             <p><strong>ServiCom</strong></p>
                             <p>servicom125@gmail.com</p>
@@ -409,20 +601,87 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 ServiCom - Serviços Elétricos. Todos os direitos reservados.</p>
+                <p>&copy; <span id="currentYear">2023</span> ServiCom - Serviços Elétricos. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Adicionando animação suave para os links
+        // Atualizar ano no footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Configuração do Carrossel
+        const totalImagens = 10; // Defina o total de imagens que você tem
+        const track = document.querySelector('.carrossel-track');
+        const indicadoresContainer = document.querySelector('.carrossel-indicadores');
+        let currentSlide = 0;
+
+        // Criar slides e indicadores dinamicamente
+        for (let i = 1; i <= totalImagens; i++) {
+            // Criar slide
+            const slide = document.createElement('div');
+            slide.className = 'carrossel-slide';
+            // Você deve colocar suas imagens na mesma pasta com os nomes img01.jpg, img02.jpg, etc.
+            slide.innerHTML = `<img src="img${i.toString().padStart(2, '0')}.jpg" alt="Trabalho ServiCom ${i}">`;
+            track.appendChild(slide);
+
+            // Criar indicador
+            const indicador = document.createElement('div');
+            indicador.className = 'indicador';
+            if (i === 1) indicador.classList.add('active');
+            indicador.dataset.index = i - 1;
+            indicador.addEventListener('click', () => goToSlide(i - 1));
+            indicadoresContainer.appendChild(indicador);
+        }
+
+        const slides = document.querySelectorAll('.carrossel-slide');
+        const indicadores = document.querySelectorAll('.indicador');
+        const totalSlides = slides.length;
+        const btnPrev = document.querySelector('.carrossel-btn.prev');
+        const btnNext = document.querySelector('.carrossel-btn.next');
+
+        // Função para atualizar a posição do carrossel
+        function updateCarrossel() {
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Atualizar indicadores ativos
+            indicadores.forEach((ind, index) => {
+                ind.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        // Função para ir para um slide específico
+        function goToSlide(n) {
+            currentSlide = (n + totalSlides) % totalSlides;
+            updateCarrossel();
+        }
+
+        // Botões de navegação
+        btnPrev.addEventListener('click', () => goToSlide(currentSlide - 1));
+        btnNext.addEventListener('click', () => goToSlide(currentSlide + 1));
+
+        // Transição automática a cada 5 segundos
+        let slideInterval = setInterval(() => goToSlide(currentSlide + 1), 5000);
+
+        // Pausar transição automática ao passar o mouse
+        const carrosselContainer = document.querySelector('.carrossel-container');
+        carrosselContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
+        carrosselContainer.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(() => goToSlide(currentSlide + 1), 5000);
+        });
+
+        // Navegação por teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') goToSlide(currentSlide - 1);
+            if (e.key === 'ArrowRight') goToSlide(currentSlide + 1);
+        });
+
+        // Animação suave para os links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
                 const targetId = this.getAttribute('href');
                 if(targetId === '#') return;
-                
                 const targetElement = document.querySelector(targetId);
                 if(targetElement) {
                     window.scrollTo({
@@ -430,17 +689,6 @@
                         behavior: 'smooth'
                     });
                 }
-            });
-        });
-        
-        // Destacar card de contato ao passar o mouse
-        document.querySelectorAll('.contato-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.15)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.08)';
             });
         });
     </script>
